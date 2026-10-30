@@ -1,0 +1,1 @@
+{"name":"nostalgie-restaurant","version":"1.0.0","private":true,"description":"Nostalgie static restaurant website, structured after Oak Harbor Starter Kit V3","scripts":{"start":"node serve.cjs","build":"node scripts/build.cjs","check":"node scripts/check.cjs"},"devDependencies":{"cssnano":"^7.1.0","less":"^4.4.0","postcss":"^8.5.0"}}

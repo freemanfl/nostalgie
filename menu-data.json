@@ -1,0 +1,657 @@
+[
+  [
+    "Předkrmy",
+    [
+      [
+        "Tresčí játra s cibulkou a bagetou s bylinkovým máslem",
+        79,
+        "110 g"
+      ],
+      [
+        "Zapečený hermelín s toastem a šunkou, chléb",
+        79,
+        "100 g"
+      ],
+      [
+        "Carpaccio ze svíčkové na bílém chlebu s parmezánem",
+        119,
+        "60 g"
+      ],
+      [
+        "Kaviár, máslo, bagetka",
+        99,
+        "50 g"
+      ],
+      [
+        "Parmská šunka s bylinkovou bagetkou",
+        99,
+        "70 g"
+      ],
+      [
+        "Uzený losos s bylinkovým máslem, bageta",
+        99,
+        "70 g"
+      ],
+      [
+        "Topinka s masovou směsí sypaná sýrem",
+        65
+      ],
+      [
+        "Zapečená šunka s vejci (hemenex)",
+        69,
+        "50 g"
+      ],
+      [
+        "Hermelín pečený ve slanině s brusinkovou omáčkou",
+        79,
+        "100 g"
+      ],
+      [
+        "Zapečená bagetka se šunkou a mozzarellou, zeleninová obloha",
+        69,
+        "1 ks"
+      ],
+      [
+        "Zapečená bagetka s uzeným lososem, sýrem a cibulkou, zeleninová obloha",
+        99,
+        "1 ks"
+      ]
+    ]
+  ],
+  [
+    "Polévky",
+    [
+      [
+        "Brokolicový krém",
+        35,
+        "0,33 l"
+      ],
+      [
+        "Česnečka",
+        29,
+        "0,33 l"
+      ],
+      [
+        "Zelná s klobásou",
+        45,
+        "0,33 l"
+      ]
+    ]
+  ],
+  [
+    "Saláty",
+    [
+      [
+        "Míchaný zeleninový salát s balkánským sýrem",
+        79,
+        "150 g"
+      ],
+      [
+        "Zeleninový salát s bazalkou, olivovým olejem a grilovanými kuřecími prsíčky",
+        109,
+        "250 g"
+      ],
+      [
+        "Ledový salát s restovanými kuřecími krutony, toasty",
+        99,
+        "250 g"
+      ],
+      [
+        "Variace salátů s uzeným kuřetem a mozzarellou, toasty",
+        109,
+        "250 g"
+      ],
+      [
+        "Řecký salát, chléb",
+        79,
+        "250 g"
+      ],
+      [
+        "Caprese s cherry rajčaty",
+        79,
+        "100 g"
+      ],
+      [
+        "Tuňákový salát s vejci na variaci salátů, toasty",
+        99,
+        "250 g"
+      ],
+      [
+        "Rajský salát s cibulkou",
+        35,
+        "100 g"
+      ]
+    ]
+  ],
+  [
+    "Ryby na grilu",
+    [
+      [
+        "Pstruh ochucený bylinkovým máslem",
+        "7 Kč / 10 g"
+      ],
+      [
+        "Losos na grilu s holandskou omáčkou",
+        199,
+        "200 g"
+      ],
+      [
+        "Grilovaný losos v parmské šunce s bylinkovou omáčkou",
+        209,
+        "200 g"
+      ],
+      [
+        "Tatarský biftek z lososa s toasty",
+        129,
+        "150 g"
+      ],
+      [
+        "Tygří krevety na česneku",
+        299,
+        "150 g"
+      ],
+      [
+        "Tygří krevety na grilu s holandskou omáčkou",
+        299,
+        "150 g"
+      ],
+      [
+        "Pražma královská na bylinkách",
+        "8 Kč / 10 g"
+      ]
+    ]
+  ],
+  [
+    "Rizota",
+    [
+      [
+        "Rizoto s kuřecím masem a sušenými rajčaty",
+        119,
+        "250 g"
+      ],
+      [
+        "Rizoto s hříbky sypané hoblinkami parmazánu",
+        99,
+        "250 g"
+      ]
+    ]
+  ],
+  [
+    "Hovězí maso",
+    [
+      [
+        "Anglický biftek se šunkou a vejcem",
+        279,
+        "200 g"
+      ],
+      [
+        "Hovězí steak zabalený ve slanině s cherry rajčátky",
+        279,
+        "200 g"
+      ],
+      [
+        "Biftek v pepřové omáčce",
+        279,
+        "200 g"
+      ],
+      [
+        "Mignon Filet „Nostalgie“",
+        219,
+        "150 g"
+      ],
+      [
+        "Tatarský biftek + 3 ks topinek",
+        219,
+        "150 g"
+      ],
+      [
+        "Biftek špikovaný anglickou slaninou s brusinkovým přelivem",
+        299,
+        "200 g"
+      ],
+      [
+        "Hovězí steak s fazolkami na cibulce se slaninou a vejcem",
+        299,
+        "200 g"
+      ]
+    ]
+  ],
+  [
+    "Vepřové maso",
+    [
+      [
+        "Panenská svíčková po argentinsku",
+        169,
+        "200 g"
+      ],
+      [
+        "Smažené panenské řízečky",
+        125,
+        "150 g"
+      ],
+      [
+        "Panenské medailonky na divoko s brusinkami",
+        149,
+        "150 g"
+      ],
+      [
+        "Plněná vepřová panenka (šunka, sýr, žampiony)",
+        149,
+        "200 g"
+      ],
+      [
+        "Farmářský steak z krkovice, farmářské fazole",
+        159,
+        "300 g"
+      ],
+      [
+        "Pikantní steak z krkovice s feferony",
+        119,
+        "200 g"
+      ],
+      [
+        "Vepřová panenka na hříbkách",
+        149,
+        "200 g"
+      ],
+      [
+        "Vepřová panenka s fazolkami na slanině",
+        179,
+        "200 g"
+      ],
+      [
+        "Vepřová krkovice na grilu, chléb",
+        129,
+        "200 g"
+      ],
+      [
+        "Vepřová kotletka s medovou omáčkou a celozrnnou hořčicí",
+        169,
+        "300 g"
+      ],
+      [
+        "Pikantní vepřová kotletka s grilovanou kukuřicí",
+        169,
+        "300 g"
+      ],
+      [
+        "Směs vepřové panenky na barevném pepři",
+        129,
+        "150 g"
+      ]
+    ]
+  ],
+  [
+    "Kuřecí maso",
+    [
+      [
+        "Grilovaný kuřecí steak s omáčkou z lišek",
+        129,
+        "150 g"
+      ],
+      [
+        "Grilovaná prsíčka nadívaná marinovaným lososem se sýrovou omáčkou",
+        159,
+        "200 g"
+      ],
+      [
+        "Kuřecí nudličky v nivové omáčce se žampiony",
+        139,
+        "150 g"
+      ],
+      [
+        "Smažená plněná kapsa se šunkou a hermelínem",
+        139,
+        "200 g"
+      ],
+      [
+        "Kuřecí steak s hříbkovou omáčkou",
+        129,
+        "150 g"
+      ],
+      [
+        "Grilovaný kuřecí steak s bazalkovou omáčkou",
+        119,
+        "200 g"
+      ],
+      [
+        "Grilovaná prsa v parmské šunce se sýrovou omáčkou",
+        139,
+        "150 g"
+      ],
+      [
+        "Pikantní kuřecí směs s restovanou cibulí a hermelínem",
+        139,
+        "150 g"
+      ],
+      [
+        "Kuřecí nudličky s brokolicí a kukuřicí na bylinkovém másle",
+        119,
+        "150 g"
+      ],
+      [
+        "Smažená plněná kapsa se šunkou, mozzarellou a listovým špenátem s česnekem",
+        139,
+        "150 g"
+      ],
+      [
+        "Kuřecí špíz proložený švestkami a slaninou",
+        149,
+        "200 g"
+      ]
+    ]
+  ],
+  [
+    "Speciality",
+    [
+      [
+        "Vepřová panenka plněná sušenými rajčaty a mozzarellou",
+        149,
+        "150 g"
+      ],
+      [
+        "Tři druhy masa grilovaná na jehle s lehkou omáčkou tzatziki",
+        199,
+        "300 g"
+      ],
+      [
+        "Marinovaná grilovaná šťavnatá panenka",
+        189,
+        "300 g"
+      ],
+      [
+        "Masová bašta s restovanou cibulí a gyros kořením",
+        169,
+        "300 g · 150 g kuřecí + 150 g vepřová panenka"
+      ],
+      [
+        "Pikantní kuřecí křidélka s chilli omáčkou",
+        139,
+        "800 g · 8–10 ks"
+      ],
+      [
+        "Barbecue kuřecí křidélka se sýrovou omáčkou",
+        139,
+        "800 g · 8–10 ks"
+      ],
+      [
+        "Minutkový guláš z hovězí svíčkové podávaný v chlebu",
+        219,
+        "150 g"
+      ],
+      [
+        "Kuřecí křidélka na čínský způsob",
+        139,
+        "800 g · 8–10 ks"
+      ],
+      [
+        "Přírodní závitky se šunkou a sýrem se sýrovou omáčkou",
+        159,
+        "200 g · 100 g kuřecí + 100 g vepřová panenka"
+      ],
+      [
+        "Marinovaná vepřová žebra",
+        179,
+        "800 g"
+      ],
+      [
+        "Pečené šunkové koleno, hořčice, chléb, křen",
+        159,
+        "1 ks"
+      ]
+    ]
+  ],
+  [
+    "Dětské a bezmasé pokrmy",
+    [
+      [
+        "Smažený sýr",
+        79,
+        "100 g"
+      ],
+      [
+        "Smažený hermelín",
+        79,
+        "100 g"
+      ],
+      [
+        "Kuřecí nudličky na másle s karotkou a vařenými brambory",
+        79,
+        "100 g"
+      ],
+      [
+        "Babiččina krupicová kaše",
+        49,
+        "200 g"
+      ]
+    ]
+  ],
+  [
+    "Dezerty",
+    [
+      [
+        "Horké lesní ovoce s vanilkovou zmrzlinou",
+        55
+      ],
+      [
+        "Jablečný závin",
+        29
+      ],
+      [
+        "Tiramisu",
+        49,
+        "100 g"
+      ],
+      [
+        "Profiteroles čokoládové",
+        49,
+        "90 g"
+      ],
+      [
+        "Palačinka s džemem, ovocem a šlehačkou",
+        49
+      ],
+      [
+        "Banán „Split“",
+        39
+      ],
+      [
+        "Restovaný ananas s kysanou smetanou",
+        59
+      ],
+      [
+        "Palačinka s tvarohem a borůvkami",
+        65
+      ],
+      [
+        "Vanilková zmrzlina s višněmi",
+        65
+      ]
+    ]
+  ],
+  [
+    "Přílohy a omáčky",
+    [
+      [
+        "Hranolky",
+        29,
+        "150 g"
+      ],
+      [
+        "Americké brambory",
+        29,
+        "150 g"
+      ],
+      [
+        "Krokety",
+        29,
+        "150 g"
+      ],
+      [
+        "Bramborové kořeněné plátky",
+        29,
+        "150 g"
+      ],
+      [
+        "Vařený brambor",
+        25,
+        "200 g"
+      ],
+      [
+        "Šťouchané brambory se slaninou a cibulkou",
+        29,
+        "200 g"
+      ],
+      [
+        "Šťouchané brambory s mascarpone",
+        35,
+        "200 g"
+      ],
+      [
+        "Brambory ze žhavého popela",
+        32,
+        "200 g"
+      ],
+      [
+        "Pečená brambora se zakysanou smetanou",
+        39,
+        "200 g"
+      ],
+      [
+        "Dušená míchaná zelenina",
+        39,
+        "150 g"
+      ],
+      [
+        "Grilovaná zelenina s parmazánem",
+        49,
+        "200 g"
+      ],
+      [
+        "Rýže",
+        29,
+        "150 g"
+      ],
+      [
+        "Chléb",
+        5,
+        "1 ks"
+      ],
+      [
+        "Bageta s bylinkovým máslem",
+        35,
+        "1 ks"
+      ],
+      [
+        "Tatarka",
+        19,
+        "70 g"
+      ],
+      [
+        "Kečup",
+        15,
+        "70 g"
+      ],
+      [
+        "Pepřová omáčka",
+        22,
+        "70 g"
+      ],
+      [
+        "BBQ omáčka",
+        22,
+        "70 g"
+      ],
+      [
+        "Česneková omáčka",
+        22,
+        "70 g"
+      ],
+      [
+        "Chilli omáčka",
+        22,
+        "70 g"
+      ]
+    ]
+  ],
+  [
+    "Pizza",
+    [
+      [
+        "Prosciutto Crudo",
+        139,
+        "Rajčata, sýr, parmská šunka, bazalka"
+      ],
+      [
+        "Salmone",
+        129,
+        "Rajčata, uzený sýr, uzený losos, cibule"
+      ],
+      [
+        "Regina",
+        119,
+        "Sugo, mozzarella, šunka, žampiony"
+      ],
+      [
+        "Sugo Pollino",
+        129,
+        "Sugo, mozzarella, uzené kuře, brokolice, žampiony, česnek"
+      ],
+      [
+        "Salami",
+        115,
+        "Sugo, mozzarella, paprikový salám, feferony"
+      ],
+      [
+        "Margherita",
+        95,
+        "Sugo, mozzarella, rajčata"
+      ],
+      [
+        "Agli Spinacci",
+        109,
+        "Sugo, mozzarella, 2 druhy sýrů, špenát"
+      ],
+      [
+        "Capricciosa",
+        119,
+        "Sugo, mozzarella, šunka, žampiony, artyčoky, vejce"
+      ],
+      [
+        "Quattro Formaggi",
+        139,
+        "Sugo, mozzarella, 3 druhy sýrů"
+      ],
+      [
+        "Hawaii",
+        119,
+        "Sugo, mozzarella, šunka, ananas"
+      ],
+      [
+        "Casa Mia",
+        125,
+        "Sugo, mozzarella, šunka, žampiony, vejce, feferony, olivy"
+      ],
+      [
+        "Palermo",
+        119,
+        "Sugo, mozzarella, klobása, špenát, žampiony, česnek"
+      ],
+      [
+        "Tonno",
+        129,
+        "Sugo, mozzarella, cibule, tuňák, olivy"
+      ],
+      [
+        "Pollo",
+        119,
+        "Sugo, mozzarella, kukuřice, kuřecí maso"
+      ],
+      [
+        "Vegetarian",
+        129,
+        "Sugo, mozzarella, čerstvá zelenina"
+      ]
+    ]
+  ]
+]

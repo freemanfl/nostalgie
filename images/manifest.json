@@ -1,0 +1,101 @@
+{
+  "interior-enhanced.png": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "width": 480,
+        "path": "images/interior-enhanced-480.webp",
+        "bytes": 37718
+      },
+      {
+        "width": 800,
+        "path": "images/interior-enhanced-800.webp",
+        "bytes": 86510
+      },
+      {
+        "width": 1200,
+        "path": "images/interior-enhanced-1200.webp",
+        "bytes": 159300
+      },
+      {
+        "width": 1536,
+        "path": "images/interior-enhanced-1536.webp",
+        "bytes": 223162
+      }
+    ]
+  },
+  "motorcycle.jpg": {
+    "width": 1440,
+    "height": 960,
+    "variants": [
+      {
+        "width": 480,
+        "path": "images/motorcycle-480.webp",
+        "bytes": 26854
+      },
+      {
+        "width": 800,
+        "path": "images/motorcycle-800.webp",
+        "bytes": 60244
+      },
+      {
+        "width": 1200,
+        "path": "images/motorcycle-1200.webp",
+        "bytes": 108776
+      },
+      {
+        "width": 1440,
+        "path": "images/motorcycle-1440.webp",
+        "bytes": 126654
+      }
+    ]
+  },
+  "dining.jpg": {
+    "width": 640,
+    "height": 480,
+    "variants": [
+      {
+        "width": 480,
+        "path": "images/dining-480.webp",
+        "bytes": 28292
+      },
+      {
+        "width": 640,
+        "path": "images/dining-640.webp",
+        "bytes": 39978
+      }
+    ]
+  },
+  "entrance.jpg": {
+    "width": 1920,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 480,
+        "path": "images/entrance-480.webp",
+        "bytes": 29402
+      },
+      {
+        "width": 800,
+        "path": "images/entrance-800.webp",
+        "bytes": 65812
+      },
+      {
+        "width": 1200,
+        "path": "images/entrance-1200.webp",
+        "bytes": 116970
+      },
+      {
+        "width": 1600,
+        "path": "images/entrance-1600.webp",
+        "bytes": 176264
+      },
+      {
+        "width": 1920,
+        "path": "images/entrance-1920.webp",
+        "bytes": 238694
+      }
+    ]
+  }
+}

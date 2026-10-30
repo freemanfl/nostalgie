@@ -1,0 +1,2 @@
+/* Progressive enhancement: the restaurant remains usable with scripts disabled. */
+.landing-menu-panel[hidden]{display:block!important}.menu-tabs,.section-dots,.intro-cover{display:none!important}.landing-menu-panel{margin-bottom:2rem}.landing-dishes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));overflow:visible}.landing-dish{height:auto!important;min-height:0!important}.landing-dish>div{display:block}.landing-dish h4,.landing-dish p{height:auto!important;min-height:0!important;overflow:visible}
