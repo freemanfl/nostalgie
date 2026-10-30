@@ -69,6 +69,18 @@
     });
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     try {
+      // Reveal the page while the pen is still moving, rather than making
+      // first-screen content wait for the entire intro sequence to finish.
+      const radius = Math.ceil(Math.hypot(innerWidth, innerHeight) / 2);
+      const opening = cover.animate([
+        {clipPath:'circle(' + radius + 'px at 50% 50%)'},
+        {clipPath:'circle(100px at 50% 50%)'}
+      ], {delay:120,duration:420,easing:'cubic-bezier(.45,0,.3,1)',fill:'forwards'});
+      const elements = [...document.querySelectorAll('.hero-copy > .eyebrow,.hero-line,.hero-copy > p,.hero-copy > .actions,.hero-bottom')];
+      elements.forEach((el, i) => el.animate([
+        {opacity:.35,transform:'translateY(18px)'},
+        {opacity:1,transform:'translateY(0)'}
+      ],{duration:500,delay:120+i*35,easing:'cubic-bezier(.16,1,.3,1)',fill:'both'}));
       for (const path of strokes) {
         const length = path.getTotalLength() + 32;
         await path.animate([
@@ -76,20 +88,14 @@
           {strokeDashoffset:String(length*.63),offset:.28,easing:'cubic-bezier(.18,.06,.42,.88)'},
           {strokeDashoffset:String(length*.30),offset:.63,easing:'cubic-bezier(.18,.06,.42,.88)'},
           {strokeDashoffset:'0',offset:1}
-        ], {duration: 700, fill:'forwards'}).finished;
+        ], {duration: 420, fill:'forwards'}).finished;
       }
-      await new Promise(resolve => setTimeout(resolve, reduceMotion ? 60 : 400));
-      const duration = 800;
-      const radius = Math.ceil(Math.hypot(innerWidth, innerHeight) / 2);
-      const exit = cover.animate([{clipPath:'circle(' + radius + 'px at 50% 50%)'},{clipPath:'circle(0px at 50% 50%)'}], {duration,easing:'cubic-bezier(.45,0,.3,1)',fill:'forwards'});
+      await opening.finished;
+      const duration = 260;
+      const exit = cover.animate([{clipPath:'circle(100px at 50% 50%)'},{clipPath:'circle(0px at 50% 50%)'}], {duration,easing:'cubic-bezier(.45,0,.3,1)',fill:'forwards'});
       cover.querySelector('svg').animate([{transform:'scale(1)',opacity:1},{transform:'scale(1.08)',opacity:0}],{duration,easing:'ease-in-out',fill:'forwards'});
       await exit.finished;
       document.body.classList.remove('intro-running');
-      const elements = [...document.querySelectorAll('.hero-copy > .eyebrow,.hero-line,.hero-copy > p,.hero-copy > .actions,.hero-bottom')];
-      elements.forEach((el, i) => el.animate([
-        {opacity:0,transform:reduceMotion?'none':'translateY(28px)'},
-        {opacity:1,transform:'translateY(0)'}
-      ],{duration:reduceMotion?200:950,delay:reduceMotion?0:150+i*120,easing:'cubic-bezier(.16,1,.3,1)',fill:'both'}));
 
     } finally {
       cover.remove(); document.body.classList.remove('intro-running');
