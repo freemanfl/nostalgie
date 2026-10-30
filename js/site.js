@@ -11,12 +11,14 @@
   const hero = document.querySelector('.hero-wide');
   const heroImage = document.querySelector('.hero-image');
   let scheduled = false;
+  let sectionMotion = false;
+  let scrollRange = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+  let heroLimit = hero.offsetHeight + 100;
   function paintScroll() {
     const y = window.scrollY;
     header.classList.toggle('is-scrolled', y > 25);
-    const range = document.documentElement.scrollHeight - innerHeight;
-    progress.style.transform = `scaleX(${range > 0 ? y / range : 0})`;
-    if (!reduceMotion && heroImage && y < hero.offsetHeight + 100) {
+    progress.style.transform = `scaleX(${scrollRange > 0 ? y / scrollRange : 0})`;
+    if (!sectionMotion && !reduceMotion && heroImage && y < heroLimit) {
       heroImage.style.setProperty('--hero-shift', Math.min(y * .3, 240) + 'px');
     }
     scheduled = false;
@@ -28,80 +30,49 @@
   // Individual viewport entrances, using the Web Animations API.
   const entranceSelector = '.story-copy > *, .story-wide figure, .food-intro .eyebrow, .food-intro h2, .intro-right > *, .panel-heading, .menu-tab, .place-heading > *, .place-images figure, .reservation-wide > *, .map-heading > *, .map-frame, .credit-footer > *';
   let entranceObserver;
+  const pendingEntrances = new Set();
   function animateEntrance(el, delay = 0) {
     const photo = el.matches('figure');
     const bottomElement = !!el.closest('.map-section,.credit-footer');
     return el.animate([
-      { opacity: 0, transform: bottomElement ? 'none' : photo ? 'translateY(55px) scale(.96)' : 'translateY(36px)', filter: 'blur(3px)' },
-      { opacity: 1, transform: bottomElement ? 'none' : 'translateY(0) scale(1)', filter: 'blur(0px)' }
-    ], { duration: photo ? 1200 : 850, delay, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' });
+      { opacity: 0, transform: bottomElement ? 'none' : photo ? 'translateY(36px) scale(.98)' : 'translateY(24px)' },
+      { opacity: 1, transform: bottomElement ? 'none' : 'translateY(0) scale(1)' }
+    ], { duration: photo ? 1000 : 800, delay, easing: 'cubic-bezier(.22,.61,.36,1)', fill: 'both' });
+  }
+  function revealPendingEntrances() {
+    if (sectionMotion) return;
+    [...pendingEntrances].forEach((el,index) => {
+      const bounds = el.getBoundingClientRect();
+      if (el.closest('[hidden]') || bounds.bottom <= header.offsetHeight || bounds.top >= innerHeight) return;
+      pendingEntrances.delete(el);
+      entranceObserver.unobserve(el);
+      el.dataset.entered = 'true';
+      el.style.opacity = '1';
+      animateEntrance(el,Math.min(index*75,300));
+    });
   }
   if (!reduceMotion && 'IntersectionObserver' in window) {
     entranceObserver = new IntersectionObserver(entries => {
       const visible = entries.filter(entry => entry.isIntersecting);
-      visible.forEach((entry, index) => {
+      entries.filter(entry => !entry.isIntersecting).forEach(entry=>pendingEntrances.delete(entry.target));
+      visible.forEach(entry => {
         const el = entry.target;
         if (el.closest('[hidden]')) return;
-        // Reveal once. Never hide content again at a section/viewport boundary.
-        entranceObserver.unobserve(el);
-        el.dataset.entered = 'true';
-        el.style.opacity = '1';
-        animateEntrance(el, Math.min(index * 85, 340));
+        pendingEntrances.add(el);
       });
-    }, { threshold: .08, rootMargin: '0px' });
+      revealPendingEntrances();
+    }, { threshold: .18, rootMargin: '0px' });
     document.querySelectorAll(entranceSelector).forEach(el => {
       el.classList.remove('motion-item', 'reveal');
       if (!el.closest('[hidden]')) el.style.opacity = '0';
       entranceObserver.observe(el);
     });
   }
-  async function playIntro() {
-    const cover = document.querySelector('.intro-cover');
-    if (!cover) return;
-    document.body.classList.add('intro-running');
-    // The intro glyph is an SVG outline, independent of font loading.
-    const strokes = [...cover.querySelectorAll('.n-ink-reveal')];
-    // Physical SVG lengths avoid browser differences with pathLength-normalised dashes.
-    strokes.forEach(path => {
-      const length = path.getTotalLength();
-      path.style.strokeDasharray = length + ' ' + (length + 100);
-      path.style.strokeDashoffset = String(length + 32);
-    });
-    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-    try {
-      // Reveal the page while the pen is still moving, rather than making
-      // first-screen content wait for the entire intro sequence to finish.
-      const radius = Math.ceil(Math.hypot(innerWidth, innerHeight) / 2);
-      const opening = cover.animate([
-        {clipPath:'circle(' + radius + 'px at 50% 50%)'},
-        {clipPath:'circle(100px at 50% 50%)'}
-      ], {delay:120,duration:420,easing:'cubic-bezier(.45,0,.3,1)',fill:'forwards'});
-      const elements = [...document.querySelectorAll('.hero-copy > .eyebrow,.hero-line,.hero-copy > p,.hero-copy > .actions,.hero-bottom')];
-      elements.forEach((el, i) => el.animate([
-        {opacity:.35,transform:'translateY(18px)'},
-        {opacity:1,transform:'translateY(0)'}
-      ],{duration:500,delay:120+i*35,easing:'cubic-bezier(.16,1,.3,1)',fill:'both'}));
-      for (const path of strokes) {
-        const length = path.getTotalLength() + 32;
-        await path.animate([
-          {strokeDashoffset:String(length),offset:0,easing:'cubic-bezier(.18,.06,.42,.88)'},
-          {strokeDashoffset:String(length*.63),offset:.28,easing:'cubic-bezier(.18,.06,.42,.88)'},
-          {strokeDashoffset:String(length*.30),offset:.63,easing:'cubic-bezier(.18,.06,.42,.88)'},
-          {strokeDashoffset:'0',offset:1}
-        ], {duration: 420, fill:'forwards'}).finished;
-      }
-      await opening.finished;
-      const duration = 260;
-      const exit = cover.animate([{clipPath:'circle(100px at 50% 50%)'},{clipPath:'circle(0px at 50% 50%)'}], {duration,easing:'cubic-bezier(.45,0,.3,1)',fill:'forwards'});
-      cover.querySelector('svg').animate([{transform:'scale(1)',opacity:1},{transform:'scale(1.08)',opacity:0}],{duration,easing:'ease-in-out',fill:'forwards'});
-      await exit.finished;
-      document.body.classList.remove('intro-running');
-
-    } finally {
-      cover.remove(); document.body.classList.remove('intro-running');
-    }
-  }
-  playIntro().catch(() => { document.querySelector('.intro-cover')?.remove(); document.body.classList.remove('intro-running'); });
+  // The image is visible immediately; text has a clear staggered fade-in.
+  document.querySelectorAll('.hero-copy > .eyebrow,.hero-line,.hero-copy > p,.hero-copy > .actions,.hero-bottom').forEach((el, i) => {
+    el.animate([{opacity:0,transform:'translateY(26px)'},{opacity:1,transform:'none'}],
+      {duration:800,delay:100+i*85,easing:'cubic-bezier(.22,.61,.36,1)',fill:'both'});
+  });
   const tabs = [...document.querySelectorAll('.menu-tab')];
   const panels = [...document.querySelectorAll('.landing-menu-panel')];
   function selectCategory(index, focus = false) {
@@ -200,32 +171,40 @@
     dotsNav.classList.toggle('on-dark',[0,1,4].includes(chapterIndex));
   }
   updateSectionDots();
-  let touchStart = null, frameId = null, wheelCooldown = 0;
-  const headerHeight = () => header.offsetHeight;
+  let touchStart = null, frameId = null;
+  let chapterStops = [];
+  function measureChapters() {
+    const headerSize = header.offsetHeight;
+    const max = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    scrollRange = max;
+    heroLimit = hero.offsetHeight + 100;
+    chapterStops = chapters.map((section,index) => index === chapters.length - 1
+      ? max : Math.min(max, Math.max(0, section.offsetTop - headerSize)));
+  }
+  measureChapters();
   function destination(index) {
-    const footer = document.querySelector('.credit-footer');
-    const max = Math.max(0, footer.offsetTop + footer.offsetHeight - innerHeight);
-    return index === chapters.length - 1 ? max : Math.min(max, Math.max(0, chapters[index].offsetTop - headerHeight()));
+    return chapterStops[index];
   }
   function goToChapter(index, instant = false) {
-    if (moving && !instant) return;
     index = Math.max(0, Math.min(chapters.length - 1, index));
+    if (moving && index === chapterIndex && !instant) return;
     chapterIndex = index;
     updateSectionDots();
     if (frameId) cancelAnimationFrame(frameId);
     const from = scrollY, to = destination(index);
     if (instant || Math.abs(from - to) < 1) {
-      window.scrollTo({top:to,behavior:'instant'}); moving = false; return;
+      window.scrollTo({top:to,behavior:'instant'}); moving = sectionMotion = false; frameId = null; document.body.classList.remove('is-section-moving'); revealPendingEntrances(); return;
     }
-    moving = true;
-    const began = performance.now(), duration = 1050;
+    moving = sectionMotion = true;
+    document.body.classList.add('is-section-moving');
+    const began = performance.now(), duration = Math.min(740, Math.max(520, Math.abs(to-from)*.65));
     function tick(now) {
       const t = Math.min(1,(now-began)/duration);
-      // Quintic smoothstep: zero velocity and acceleration at both ends.
-      const eased = t*t*t*(t*(t*6-15)+10);
+      // Start responding immediately, then ease into the exact section stop.
+      const eased = 1-Math.pow(1-t,3);
       window.scrollTo({top:from+(to-from)*eased,behavior:'instant'});
       if (t < 1) frameId = requestAnimationFrame(tick);
-      else { frameId = null; moving = false; wheelSum = 0; }
+      else { frameId = null; moving = sectionMotion = false; document.body.classList.remove('is-section-moving'); wheelSum = 0; paintScroll(); revealPendingEntrances(); }
     }
     frameId = requestAnimationFrame(tick);
   }
@@ -235,11 +214,15 @@
     if (event.ctrlKey || excluded(event.target) || Math.abs(event.deltaX)>Math.abs(event.deltaY)) return;
     event.preventDefault();
     const now = performance.now();
-    if (moving || now < wheelCooldown || document.body.classList.contains('intro-running')) { wheelTime = now; return; }
+    const gap = now-wheelTime;
+    if (moving) { wheelTime = now; return; }
     const delta = event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?innerHeight:1);
-    if (now-wheelTime>220 || Math.sign(wheelSum)!==Math.sign(delta)) wheelSum=0;
+    // Ignore the tail of one trackpad gesture, but accept a fresh gesture
+    // without the old 1.25-second global lockout.
+    if (!wheelSum && gap<150) { wheelTime=now; return; }
+    if (gap>150 || Math.sign(wheelSum)!==Math.sign(delta)) wheelSum=0;
     wheelTime=now; wheelSum+=delta;
-    if (Math.abs(wheelSum)>=30) { const direction=Math.sign(wheelSum);wheelSum=0;wheelCooldown=now+1250;goToChapter(chapterIndex+direction); }
+    if (Math.abs(wheelSum)>=18) { const direction=Math.sign(wheelSum);wheelSum=0;goToChapter(chapterIndex+direction); }
   },{passive:false});
   addEventListener('touchstart',event=>{
     if (touchExcluded(event.target) || event.touches.length!==1) {touchStart=null;return;}
@@ -276,7 +259,9 @@
     updateSectionDots();
   });
   let resizeTimer;
-  addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>goToChapter(chapterIndex,true),160);});
+  addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{measureChapters();goToChapter(chapterIndex,true);},160);});
+  addEventListener('load',measureChapters,{once:true});
+  document.fonts?.ready.then(measureChapters);
   const photos = [...document.querySelectorAll('.place-images img,.story-wide img')];
   const dialog = document.createElement('dialog');
   dialog.className = 'photo-viewer';
@@ -299,4 +284,9 @@
       document.body.classList.add('viewer-open'); dialog.showModal();
     });
   });
+  // A slow photo drift, independent of the pointer and the foreground text.
+  const backgroundObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry=>entry.target.classList.toggle('background-visible',entry.isIntersecting));
+  },{threshold:.1});
+  backgroundObserver.observe(hero);
 })();
