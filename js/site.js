@@ -28,7 +28,7 @@
   }, { passive: true });
   paintScroll();
   // Individual viewport entrances, using the Web Animations API.
-  const entranceSelector = '.story-copy > *, .story-wide figure, .food-intro .eyebrow, .food-intro h2, .intro-right > *, .panel-heading, .menu-tab, .place-heading > *, .place-images figure, .reservation-wide > *, .map-heading > *, .map-frame, .credit-footer > *';
+  const entranceSelector = '.story-copy > *, .story-wide figure, .food-intro .eyebrow, .food-intro h2, .intro-right > *, .panel-heading, .menu-tab, .place-heading > *, .place-images figure, .reviews-heading > *, .review-card, .reviews-bottom, .reservation-wide > *, .map-heading > *, .map-frame, .credit-footer > *';
   let entranceObserver;
   const pendingEntrances = new Set();
   function animateEntrance(el, delay = 0) {
@@ -150,15 +150,15 @@
   // Discrete section navigation: one gesture -> one fixed destination.
   const chapters = [...document.querySelectorAll('.snap-section')];
   let chapterIndex = 0, moving = false, wheelSum = 0, wheelTime = 0;
-  const sectionNames = ['Úvod','Restaurace','Jídelní lístek','Galerie','Rezervace','Kontakt'];
+  const sectionNames = ['Home','Restaurant','Menu','Gallery','Reviews','Reservations','Contact'];
   const dotsNav = document.createElement('nav');
   dotsNav.className = 'section-dots';
-  dotsNav.setAttribute('aria-label','Navigace sekcí');
+  dotsNav.setAttribute('aria-label','Section navigation');
   const sectionDots = chapters.map((section,index)=>{
     const button=document.createElement('button');
     button.type='button';button.className='section-dot';
-    button.setAttribute('aria-label',sectionNames[index] || 'Sekce '+(index+1));
-    button.innerHTML='<span class="dot-label">'+(sectionNames[index] || 'Sekce '+(index+1))+'</span><span class="dot-mark" aria-hidden="true"></span>';
+    button.setAttribute('aria-label',sectionNames[index] || 'Section '+(index+1));
+    button.innerHTML='<span class="dot-label">'+(sectionNames[index] || 'Section '+(index+1))+'</span><span class="dot-mark" aria-hidden="true"></span>';
     button.addEventListener('click',()=>goToChapter(index));
     dotsNav.append(button);return button;
   });
@@ -168,7 +168,7 @@
       dot.classList.toggle('active',index===chapterIndex);
       if(index===chapterIndex)dot.setAttribute('aria-current','step');else dot.removeAttribute('aria-current');
     });
-    dotsNav.classList.toggle('on-dark',[0,1,4].includes(chapterIndex));
+    dotsNav.classList.toggle('on-dark',chapters[chapterIndex].matches('.hero-wide,.story-wide,.reservation-wide'));
   }
   updateSectionDots();
   let touchStart = null, frameId = null;
@@ -265,8 +265,8 @@
   const photos = [...document.querySelectorAll('.place-images img,.story-wide img')];
   const dialog = document.createElement('dialog');
   dialog.className = 'photo-viewer';
-  dialog.setAttribute('aria-label', 'Fotografie restaurace');
-  dialog.innerHTML = '<button class="viewer-close" type="button" aria-label="Zavřít fotografii">×</button><img alt=""><p></p>';
+  dialog.setAttribute('aria-label', 'Restaurant photographs');
+  dialog.innerHTML = '<button class="viewer-close" type="button" aria-label="Close photo">×</button><img alt=""><p></p>';
   document.body.append(dialog);
   const fullImage = dialog.querySelector('img');
   dialog.querySelector('button').addEventListener('click', () => dialog.close());
@@ -275,7 +275,7 @@
   photos.forEach(img => {
     const button = document.createElement('button');
     button.type = 'button'; button.className = 'photo-trigger';
-    button.setAttribute('aria-label', `Zvětšit fotografii: ${img.alt}`);
+    button.setAttribute('aria-label', `Enlarge photo: ${img.alt}`);
     img.replaceWith(button); button.append(img);
 
     button.addEventListener('click', () => {

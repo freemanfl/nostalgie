@@ -1,440 +1,440 @@
 [
   [
-    "Předkrmy",
+    "Starters",
     [
       [
-        "Tresčí játra s cibulkou a bagetou s bylinkovým máslem",
+        "Cod liver with onion and a baguette with herb butter",
         79,
         "110 g"
       ],
       [
-        "Zapečený hermelín s toastem a šunkou, chléb",
+        "Baked Hermelin cheese with ham, toast and bread",
         79,
         "100 g"
       ],
       [
-        "Carpaccio ze svíčkové na bílém chlebu s parmezánem",
+        "Beef tenderloin carpaccio on white bread with Parmesan",
         119,
         "60 g"
       ],
       [
-        "Kaviár, máslo, bagetka",
+        "Caviar with butter and a baguette",
         99,
         "50 g"
       ],
       [
-        "Parmská šunka s bylinkovou bagetkou",
+        "Parma ham with a herb baguette",
         99,
         "70 g"
       ],
       [
-        "Uzený losos s bylinkovým máslem, bageta",
+        "Smoked salmon with herb butter and a baguette",
         99,
         "70 g"
       ],
       [
-        "Topinka s masovou směsí sypaná sýrem",
+        "Fried bread with a meat topping and grated cheese",
         65
       ],
       [
-        "Zapečená šunka s vejci (hemenex)",
+        "Baked ham and eggs",
         69,
         "50 g"
       ],
       [
-        "Hermelín pečený ve slanině s brusinkovou omáčkou",
+        "Bacon-wrapped Hermelin cheese with cranberry sauce",
         79,
         "100 g"
       ],
       [
-        "Zapečená bagetka se šunkou a mozzarellou, zeleninová obloha",
+        "Baked baguette with ham, mozzarella and a vegetable garnish",
         69,
-        "1 ks"
+        "1 piece"
       ],
       [
-        "Zapečená bagetka s uzeným lososem, sýrem a cibulkou, zeleninová obloha",
+        "Baked baguette with smoked salmon, cheese, onion and a vegetable garnish",
         99,
-        "1 ks"
+        "1 piece"
       ]
     ]
   ],
   [
-    "Polévky",
+    "Soups",
     [
       [
-        "Brokolicový krém",
+        "Cream of broccoli soup",
         35,
-        "0,33 l"
+        "0.33 l"
       ],
       [
-        "Česnečka",
+        "Czech garlic soup",
         29,
-        "0,33 l"
+        "0.33 l"
       ],
       [
-        "Zelná s klobásou",
+        "Cabbage and sausage soup",
         45,
-        "0,33 l"
+        "0.33 l"
       ]
     ]
   ],
   [
-    "Saláty",
+    "Salads",
     [
       [
-        "Míchaný zeleninový salát s balkánským sýrem",
+        "Mixed vegetable salad with Balkan-style white cheese",
         79,
         "150 g"
       ],
       [
-        "Zeleninový salát s bazalkou, olivovým olejem a grilovanými kuřecími prsíčky",
+        "Vegetable salad with basil, olive oil and grilled chicken breast",
         109,
         "250 g"
       ],
       [
-        "Ledový salát s restovanými kuřecími krutony, toasty",
+        "Iceberg lettuce with sauteed chicken pieces and toast",
         99,
         "250 g"
       ],
       [
-        "Variace salátů s uzeným kuřetem a mozzarellou, toasty",
+        "Mixed leaves with smoked chicken, mozzarella and toast",
         109,
         "250 g"
       ],
       [
-        "Řecký salát, chléb",
+        "Greek salad with bread",
         79,
         "250 g"
       ],
       [
-        "Caprese s cherry rajčaty",
+        "Caprese with cherry tomatoes",
         79,
         "100 g"
       ],
       [
-        "Tuňákový salát s vejci na variaci salátů, toasty",
+        "Tuna and egg salad on mixed leaves with toast",
         99,
         "250 g"
       ],
       [
-        "Rajský salát s cibulkou",
+        "Tomato and onion salad",
         35,
         "100 g"
       ]
     ]
   ],
   [
-    "Ryby na grilu",
+    "Grilled fish",
     [
       [
-        "Pstruh ochucený bylinkovým máslem",
+        "Trout with herb butter",
         "7 Kč / 10 g"
       ],
       [
-        "Losos na grilu s holandskou omáčkou",
+        "Grilled salmon with hollandaise sauce",
         199,
         "200 g"
       ],
       [
-        "Grilovaný losos v parmské šunce s bylinkovou omáčkou",
+        "Grilled salmon wrapped in Parma ham with herb sauce",
         209,
         "200 g"
       ],
       [
-        "Tatarský biftek z lososa s toasty",
+        "Salmon tartare with toast",
         129,
         "150 g"
       ],
       [
-        "Tygří krevety na česneku",
+        "Tiger prawns with garlic",
         299,
         "150 g"
       ],
       [
-        "Tygří krevety na grilu s holandskou omáčkou",
+        "Grilled tiger prawns with hollandaise sauce",
         299,
         "150 g"
       ],
       [
-        "Pražma královská na bylinkách",
+        "Gilthead sea bream with herbs",
         "8 Kč / 10 g"
       ]
     ]
   ],
   [
-    "Rizota",
+    "Risotto",
     [
       [
-        "Rizoto s kuřecím masem a sušenými rajčaty",
+        "Chicken and sun-dried tomato risotto",
         119,
         "250 g"
       ],
       [
-        "Rizoto s hříbky sypané hoblinkami parmazánu",
+        "Porcini mushroom risotto with Parmesan shavings",
         99,
         "250 g"
       ]
     ]
   ],
   [
-    "Hovězí maso",
+    "Beef",
     [
       [
-        "Anglický biftek se šunkou a vejcem",
+        "Beef fillet steak with ham and egg",
         279,
         "200 g"
       ],
       [
-        "Hovězí steak zabalený ve slanině s cherry rajčátky",
+        "Bacon-wrapped beef steak with cherry tomatoes",
         279,
         "200 g"
       ],
       [
-        "Biftek v pepřové omáčce",
+        "Beef fillet steak with peppercorn sauce",
         279,
         "200 g"
       ],
       [
-        "Mignon Filet „Nostalgie“",
+        "Nostalgie filet mignon",
         219,
         "150 g"
       ],
       [
-        "Tatarský biftek + 3 ks topinek",
+        "Beef tartare with 3 slices of fried bread",
         219,
         "150 g"
       ],
       [
-        "Biftek špikovaný anglickou slaninou s brusinkovým přelivem",
+        "Bacon-larded beef fillet steak with cranberry sauce",
         299,
         "200 g"
       ],
       [
-        "Hovězí steak s fazolkami na cibulce se slaninou a vejcem",
+        "Beef steak with green beans, onion, bacon and egg",
         299,
         "200 g"
       ]
     ]
   ],
   [
-    "Vepřové maso",
+    "Pork",
     [
       [
-        "Panenská svíčková po argentinsku",
+        "Argentinian-style pork tenderloin",
         169,
         "200 g"
       ],
       [
-        "Smažené panenské řízečky",
+        "Breaded pork tenderloin schnitzels",
         125,
         "150 g"
       ],
       [
-        "Panenské medailonky na divoko s brusinkami",
+        "Game-style pork medallions with cranberries",
         149,
         "150 g"
       ],
       [
-        "Plněná vepřová panenka (šunka, sýr, žampiony)",
+        "Pork tenderloin stuffed with ham, cheese and mushrooms",
         149,
         "200 g"
       ],
       [
-        "Farmářský steak z krkovice, farmářské fazole",
+        "Farmer's pork neck steak with beans",
         159,
         "300 g"
       ],
       [
-        "Pikantní steak z krkovice s feferony",
+        "Spicy pork neck steak with hot peppers",
         119,
         "200 g"
       ],
       [
-        "Vepřová panenka na hříbkách",
+        "Pork tenderloin with porcini mushrooms",
         149,
         "200 g"
       ],
       [
-        "Vepřová panenka s fazolkami na slanině",
+        "Pork tenderloin with green beans and bacon",
         179,
         "200 g"
       ],
       [
-        "Vepřová krkovice na grilu, chléb",
+        "Grilled pork neck steak with bread",
         129,
         "200 g"
       ],
       [
-        "Vepřová kotletka s medovou omáčkou a celozrnnou hořčicí",
+        "Pork chop with honey and wholegrain mustard sauce",
         169,
         "300 g"
       ],
       [
-        "Pikantní vepřová kotletka s grilovanou kukuřicí",
+        "Spicy pork chop with grilled sweetcorn",
         169,
         "300 g"
       ],
       [
-        "Směs vepřové panenky na barevném pepři",
+        "Pork tenderloin strips with mixed peppercorns",
         129,
         "150 g"
       ]
     ]
   ],
   [
-    "Kuřecí maso",
+    "Chicken",
     [
       [
-        "Grilovaný kuřecí steak s omáčkou z lišek",
+        "Grilled chicken steak with chanterelle sauce",
         129,
         "150 g"
       ],
       [
-        "Grilovaná prsíčka nadívaná marinovaným lososem se sýrovou omáčkou",
+        "Grilled chicken breast stuffed with marinated salmon, served with cheese sauce",
         159,
         "200 g"
       ],
       [
-        "Kuřecí nudličky v nivové omáčce se žampiony",
+        "Chicken strips in blue cheese sauce with mushrooms",
         139,
         "150 g"
       ],
       [
-        "Smažená plněná kapsa se šunkou a hermelínem",
+        "Breaded chicken breast stuffed with ham and Hermelin cheese",
         139,
         "200 g"
       ],
       [
-        "Kuřecí steak s hříbkovou omáčkou",
+        "Chicken steak with porcini mushroom sauce",
         129,
         "150 g"
       ],
       [
-        "Grilovaný kuřecí steak s bazalkovou omáčkou",
+        "Grilled chicken steak with basil sauce",
         119,
         "200 g"
       ],
       [
-        "Grilovaná prsa v parmské šunce se sýrovou omáčkou",
+        "Grilled chicken breast wrapped in Parma ham with cheese sauce",
         139,
         "150 g"
       ],
       [
-        "Pikantní kuřecí směs s restovanou cibulí a hermelínem",
+        "Spicy chicken with sauteed onion and Hermelin cheese",
         139,
         "150 g"
       ],
       [
-        "Kuřecí nudličky s brokolicí a kukuřicí na bylinkovém másle",
+        "Chicken strips with broccoli and sweetcorn in herb butter",
         119,
         "150 g"
       ],
       [
-        "Smažená plněná kapsa se šunkou, mozzarellou a listovým špenátem s česnekem",
+        "Breaded chicken breast stuffed with ham, mozzarella, spinach and garlic",
         139,
         "150 g"
       ],
       [
-        "Kuřecí špíz proložený švestkami a slaninou",
+        "Chicken skewer with prunes and bacon",
         149,
         "200 g"
       ]
     ]
   ],
   [
-    "Speciality",
+    "Specialities",
     [
       [
-        "Vepřová panenka plněná sušenými rajčaty a mozzarellou",
+        "Pork tenderloin stuffed with sun-dried tomatoes and mozzarella",
         149,
         "150 g"
       ],
       [
-        "Tři druhy masa grilovaná na jehle s lehkou omáčkou tzatziki",
+        "Three-meat grilled skewer with a light tzatziki sauce",
         199,
         "300 g"
       ],
       [
-        "Marinovaná grilovaná šťavnatá panenka",
+        "Juicy marinated grilled pork tenderloin",
         189,
         "300 g"
       ],
       [
-        "Masová bašta s restovanou cibulí a gyros kořením",
+        "Mixed meat platter with sauteed onion and gyros seasoning",
         169,
-        "300 g · 150 g kuřecí + 150 g vepřová panenka"
+        "300 g · 150 g chicken + 150 g pork tenderloin"
       ],
       [
-        "Pikantní kuřecí křidélka s chilli omáčkou",
+        "Spicy chicken wings with chilli sauce",
         139,
-        "800 g · 8–10 ks"
+        "800 g · 8–10 pieces"
       ],
       [
-        "Barbecue kuřecí křidélka se sýrovou omáčkou",
+        "Barbecue chicken wings with cheese sauce",
         139,
-        "800 g · 8–10 ks"
+        "800 g · 8–10 pieces"
       ],
       [
-        "Minutkový guláš z hovězí svíčkové podávaný v chlebu",
+        "Quick-cooked beef tenderloin goulash served in a bread bowl",
         219,
         "150 g"
       ],
       [
-        "Kuřecí křidélka na čínský způsob",
+        "Chinese-style chicken wings",
         139,
-        "800 g · 8–10 ks"
+        "800 g · 8–10 pieces"
       ],
       [
-        "Přírodní závitky se šunkou a sýrem se sýrovou omáčkou",
+        "Chicken and pork rolls with ham, cheese and cheese sauce",
         159,
-        "200 g · 100 g kuřecí + 100 g vepřová panenka"
+        "200 g · 100 g chicken + 100 g pork tenderloin"
       ],
       [
-        "Marinovaná vepřová žebra",
+        "Marinated pork ribs",
         179,
         "800 g"
       ],
       [
-        "Pečené šunkové koleno, hořčice, chléb, křen",
+        "Roast pork knuckle with mustard, bread and horseradish",
         159,
-        "1 ks"
+        "1 piece"
       ]
     ]
   ],
   [
-    "Dětské a bezmasé pokrmy",
+    "Kids & meat-free",
     [
       [
-        "Smažený sýr",
+        "Breaded fried cheese",
         79,
         "100 g"
       ],
       [
-        "Smažený hermelín",
+        "Breaded fried Hermelin cheese",
         79,
         "100 g"
       ],
       [
-        "Kuřecí nudličky na másle s karotkou a vařenými brambory",
+        "Chicken strips in butter with carrots and boiled potatoes",
         79,
         "100 g"
       ],
       [
-        "Babiččina krupicová kaše",
+        "Grandma's semolina pudding",
         49,
         "200 g"
       ]
     ]
   ],
   [
-    "Dezerty",
+    "Desserts",
     [
       [
-        "Horké lesní ovoce s vanilkovou zmrzlinou",
+        "Hot forest berries with vanilla ice cream",
         55
       ],
       [
-        "Jablečný závin",
+        "Apple strudel",
         29
       ],
       [
@@ -443,132 +443,132 @@
         "100 g"
       ],
       [
-        "Profiteroles čokoládové",
+        "Chocolate profiteroles",
         49,
         "90 g"
       ],
       [
-        "Palačinka s džemem, ovocem a šlehačkou",
+        "Pancake with jam, fruit and whipped cream",
         49
       ],
       [
-        "Banán „Split“",
+        "Banana split",
         39
       ],
       [
-        "Restovaný ananas s kysanou smetanou",
+        "Sauteed pineapple with sour cream",
         59
       ],
       [
-        "Palačinka s tvarohem a borůvkami",
+        "Pancake with quark and blueberries",
         65
       ],
       [
-        "Vanilková zmrzlina s višněmi",
+        "Vanilla ice cream with sour cherries",
         65
       ]
     ]
   ],
   [
-    "Přílohy a omáčky",
+    "Sides & sauces",
     [
       [
-        "Hranolky",
+        "French fries",
         29,
         "150 g"
       ],
       [
-        "Americké brambory",
+        "Potato wedges",
         29,
         "150 g"
       ],
       [
-        "Krokety",
+        "Potato croquettes",
         29,
         "150 g"
       ],
       [
-        "Bramborové kořeněné plátky",
+        "Seasoned potato slices",
         29,
         "150 g"
       ],
       [
-        "Vařený brambor",
+        "Boiled potatoes",
         25,
         "200 g"
       ],
       [
-        "Šťouchané brambory se slaninou a cibulkou",
+        "Crushed potatoes with bacon and onion",
         29,
         "200 g"
       ],
       [
-        "Šťouchané brambory s mascarpone",
+        "Crushed potatoes with mascarpone",
         35,
         "200 g"
       ],
       [
-        "Brambory ze žhavého popela",
+        "Ember-baked potatoes",
         32,
         "200 g"
       ],
       [
-        "Pečená brambora se zakysanou smetanou",
+        "Baked potato with sour cream",
         39,
         "200 g"
       ],
       [
-        "Dušená míchaná zelenina",
+        "Steamed mixed vegetables",
         39,
         "150 g"
       ],
       [
-        "Grilovaná zelenina s parmazánem",
+        "Grilled vegetables with Parmesan",
         49,
         "200 g"
       ],
       [
-        "Rýže",
+        "Rice",
         29,
         "150 g"
       ],
       [
-        "Chléb",
+        "Bread",
         5,
-        "1 ks"
+        "1 piece"
       ],
       [
-        "Bageta s bylinkovým máslem",
+        "Baguette with herb butter",
         35,
-        "1 ks"
+        "1 piece"
       ],
       [
-        "Tatarka",
+        "Tartare sauce",
         19,
         "70 g"
       ],
       [
-        "Kečup",
+        "Ketchup",
         15,
         "70 g"
       ],
       [
-        "Pepřová omáčka",
+        "Peppercorn sauce",
         22,
         "70 g"
       ],
       [
-        "BBQ omáčka",
+        "BBQ sauce",
         22,
         "70 g"
       ],
       [
-        "Česneková omáčka",
+        "Garlic sauce",
         22,
         "70 g"
       ],
       [
-        "Chilli omáčka",
+        "Chilli sauce",
         22,
         "70 g"
       ]
@@ -580,77 +580,77 @@
       [
         "Prosciutto Crudo",
         139,
-        "Rajčata, sýr, parmská šunka, bazalka"
+        "Tomatoes, cheese, Parma ham, basil"
       ],
       [
         "Salmone",
         129,
-        "Rajčata, uzený sýr, uzený losos, cibule"
+        "Tomatoes, smoked cheese, smoked salmon, onion"
       ],
       [
         "Regina",
         119,
-        "Sugo, mozzarella, šunka, žampiony"
+        "Tomato sauce, mozzarella, ham, mushrooms"
       ],
       [
         "Sugo Pollino",
         129,
-        "Sugo, mozzarella, uzené kuře, brokolice, žampiony, česnek"
+        "Tomato sauce, mozzarella, smoked chicken, broccoli, mushrooms, garlic"
       ],
       [
         "Salami",
         115,
-        "Sugo, mozzarella, paprikový salám, feferony"
+        "Tomato sauce, mozzarella, paprika salami, hot peppers"
       ],
       [
         "Margherita",
         95,
-        "Sugo, mozzarella, rajčata"
+        "Tomato sauce, mozzarella, tomatoes"
       ],
       [
         "Agli Spinacci",
         109,
-        "Sugo, mozzarella, 2 druhy sýrů, špenát"
+        "Tomato sauce, mozzarella, two cheeses, spinach"
       ],
       [
         "Capricciosa",
         119,
-        "Sugo, mozzarella, šunka, žampiony, artyčoky, vejce"
+        "Tomato sauce, mozzarella, ham, mushrooms, artichokes, egg"
       ],
       [
         "Quattro Formaggi",
         139,
-        "Sugo, mozzarella, 3 druhy sýrů"
+        "Tomato sauce, mozzarella, three cheeses"
       ],
       [
         "Hawaii",
         119,
-        "Sugo, mozzarella, šunka, ananas"
+        "Tomato sauce, mozzarella, ham, pineapple"
       ],
       [
         "Casa Mia",
         125,
-        "Sugo, mozzarella, šunka, žampiony, vejce, feferony, olivy"
+        "Tomato sauce, mozzarella, ham, mushrooms, egg, hot peppers, olives"
       ],
       [
         "Palermo",
         119,
-        "Sugo, mozzarella, klobása, špenát, žampiony, česnek"
+        "Tomato sauce, mozzarella, sausage, spinach, mushrooms, garlic"
       ],
       [
         "Tonno",
         129,
-        "Sugo, mozzarella, cibule, tuňák, olivy"
+        "Tomato sauce, mozzarella, onion, tuna, olives"
       ],
       [
         "Pollo",
         119,
-        "Sugo, mozzarella, kukuřice, kuřecí maso"
+        "Tomato sauce, mozzarella, sweetcorn, chicken"
       ],
       [
         "Vegetarian",
         129,
-        "Sugo, mozzarella, čerstvá zelenina"
+        "Tomato sauce, mozzarella, fresh vegetables"
       ]
     ]
   ]
