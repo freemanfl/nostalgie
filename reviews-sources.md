@@ -11,4 +11,4 @@ Displayed aggregate: 4.5/5, 1,448 reviews. This is a manually recorded snapshot,
 
 Both cards link through the section to the original restaurant listing. No external review widget, author images, API credentials or aggregate review structured data are included.
 
-The review section is now in English. Both review texts are English translations of the verified Czech originals; captions explicitly identify them as translated. Reviewer names are unchanged.
+The review section uses the verified Czech originals. Reviewer names are unchanged.

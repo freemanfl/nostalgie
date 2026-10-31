@@ -17,7 +17,7 @@ The production files are ordinary HTML, CSS, JavaScript, images, and fonts. Ther
 
 ## Edit the sources
 
-The English homepage is `index.html`; the Hebrew version is `he.html` with right-to-left overrides in `css/hebrew.css`. Their complete menus are `menu.html` and `menu-he.html`. Edit `menu-data.json` and `menu-data-he.json` together; the checks verify matching dish counts and prices. The language switch keeps both versions available.
+The Czech homepage is `index.html`, with its full menu in `menu.html`. Edit `menu-data.json` for both menu presentations. The site has one language version.
 
 - `index.html`: homepage structure and business copy. Content between `MENU:START` and `MENU:END` is generated; edit the JSON instead.
 - `menu-data.json`: the single source for both menu presentations. `npm run build` updates the homepage panels and the standalone menu.

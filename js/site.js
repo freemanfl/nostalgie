@@ -3,25 +3,19 @@
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   // Motion explicitly enabled for this preview at the user's request.
   const reduceMotion = false;
-  const isHebrew = document.documentElement.lang === 'he';
   const header = document.querySelector('.site-header');
   const progress = document.createElement('div');
   progress.className = 'reading-progress';
   progress.setAttribute('aria-hidden', 'true');
   document.body.append(progress);
   const hero = document.querySelector('.hero-wide');
-  const heroImage = document.querySelector('.hero-image');
   let scheduled = false;
   let sectionMotion = false;
   let scrollRange = Math.max(0, document.documentElement.scrollHeight - innerHeight);
-  let heroLimit = hero.offsetHeight + 100;
   function paintScroll() {
     const y = window.scrollY;
     header.classList.toggle('is-scrolled', y > 25);
     progress.style.transform = `scaleX(${scrollRange > 0 ? y / scrollRange : 0})`;
-    if (!sectionMotion && !reduceMotion && heroImage && y < heroLimit) {
-      heroImage.style.setProperty('--hero-shift', Math.min(y * .3, 240) + 'px');
-    }
     scheduled = false;
   }
   addEventListener('scroll', () => {
@@ -108,8 +102,8 @@
     tab.addEventListener('click', () => selectCategory(index));
     tab.addEventListener('keydown', event => {
       let next;
-      if (event.key === 'ArrowDown' || event.key === (isHebrew?'ArrowLeft':'ArrowRight')) next = (index + 1) % tabs.length;
-      if (event.key === 'ArrowUp' || event.key === (isHebrew?'ArrowRight':'ArrowLeft')) next = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
       if (event.key === 'Home') next = 0;
       if (event.key === 'End') next = tabs.length - 1;
       if (next !== undefined) { event.preventDefault(); selectCategory(next, true); }
@@ -144,22 +138,22 @@
       const delta = (horizontal ? event.deltaX : event.deltaY) * (event.deltaMode === 1 ? 16 : 1);
       if (!delta) return;
       event.preventDefault(); event.stopPropagation();
-      rail.scrollLeft += delta * (isHebrew && !horizontal ? -1 : 1);
+      rail.scrollLeft += delta;
     }, {passive:false});
   });
 
   // Discrete section navigation: one gesture -> one fixed destination.
   const chapters = [...document.querySelectorAll('.snap-section')];
   let chapterIndex = 0, moving = false, wheelSum = 0, wheelTime = 0;
-  const sectionNames = isHebrew ? ['בית','המסעדה','תפריט','גלריה','ביקורות','הזמנות','יצירת קשר'] : ['Home','Restaurant','Menu','Gallery','Reviews','Reservations','Contact'];
+  const sectionNames = ['Úvod','Restaurace','Jídelní lístek','Galerie','Recenze','Rezervace','Kontakt'];
   const dotsNav = document.createElement('nav');
   dotsNav.className = 'section-dots';
-  dotsNav.setAttribute('aria-label',isHebrew?'ניווט בין חלקי הדף':'Section navigation');
+  dotsNav.setAttribute('aria-label','Navigace sekcí');
   const sectionDots = chapters.map((section,index)=>{
     const button=document.createElement('button');
     button.type='button';button.className='section-dot';
-    button.setAttribute('aria-label',sectionNames[index] || 'Section '+(index+1));
-    button.innerHTML='<span class="dot-label">'+(sectionNames[index] || 'Section '+(index+1))+'</span><span class="dot-mark" aria-hidden="true"></span>';
+    button.setAttribute('aria-label',sectionNames[index] || 'Sekce '+(index+1));
+    button.innerHTML='<span class="dot-label">'+(sectionNames[index] || 'Sekce '+(index+1))+'</span><span class="dot-mark" aria-hidden="true"></span>';
     button.addEventListener('click',()=>goToChapter(index));
     dotsNav.append(button);return button;
   });
@@ -178,7 +172,6 @@
     const headerSize = header.offsetHeight;
     const max = Math.max(0, document.documentElement.scrollHeight - innerHeight);
     scrollRange = max;
-    heroLimit = hero.offsetHeight + 100;
     chapterStops = chapters.map((section,index) => index === chapters.length - 1
       ? max : Math.min(max, Math.max(0, section.offsetTop - headerSize)));
   }
@@ -266,8 +259,8 @@
   const photos = [...document.querySelectorAll('.place-images img,.story-wide img')];
   const dialog = document.createElement('dialog');
   dialog.className = 'photo-viewer';
-  dialog.setAttribute('aria-label', isHebrew?'תמונות המסעדה':'Restaurant photographs');
-  dialog.innerHTML = '<button class="viewer-close" type="button" aria-label="'+(isHebrew?'סגירת תמונה':'Close photo')+'">×</button><img alt=""><p></p>';
+  dialog.setAttribute('aria-label','Fotografie restaurace');
+  dialog.innerHTML = '<button class="viewer-close" type="button" aria-label="Zavřít fotografii">×</button><img alt=""><p></p>';
   document.body.append(dialog);
   const fullImage = dialog.querySelector('img');
   dialog.querySelector('button').addEventListener('click', () => dialog.close());
@@ -276,7 +269,7 @@
   photos.forEach(img => {
     const button = document.createElement('button');
     button.type = 'button'; button.className = 'photo-trigger';
-    button.setAttribute('aria-label', `${isHebrew?'הגדלת תמונה':'Enlarge photo'}: ${img.alt}`);
+    button.setAttribute('aria-label', `Zvětšit fotografii: ${img.alt}`);
     img.replaceWith(button); button.append(img);
 
     button.addEventListener('click', () => {
@@ -288,6 +281,6 @@
   // A slow photo drift, independent of the pointer and the foreground text.
   const backgroundObserver = new IntersectionObserver(entries => {
     entries.forEach(entry=>entry.target.classList.toggle('background-visible',entry.isIntersecting));
-  },{threshold:.1});
+  },{threshold:.01,rootMargin:`-${header.offsetHeight}px 0px 0px 0px`});
   backgroundObserver.observe(hero);
 })();

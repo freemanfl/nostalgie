@@ -1,8 +1,7 @@
 /* Oak Harbor V3 pattern: first-screen layout loaded before below-fold styles. */
-.site-header nav>a.language-switch{display:inline-flex!important;align-items:center;min-height:32px;unicode-bidi:isolate;letter-spacing:0}
-.hero-wide.background-visible .hero-image{animation:hero-background-drift 12s ease-in-out infinite alternate}
-.home.is-section-moving .hero-wide .hero-image{animation-play-state:paused}
-@keyframes hero-background-drift{from{transform:translate3d(-2%,var(--hero-shift,0px),0) scale(1.18)}to{transform:translate3d(2%,var(--hero-shift,0px),0) scale(1.28)}}
+.hero-wide .hero-image{animation:hero-background-drift 12s ease-in-out infinite alternate;animation-play-state:paused}
+.hero-wide.background-visible .hero-image{animation-play-state:running}
+@keyframes hero-background-drift{from{transform:translate3d(-2%,0,0) scale(1.18)}to{transform:translate3d(2%,0,0) scale(1.28)}}
 /* Motion is explicitly enabled in this local design preview at the user's request. */
 .home{background:var(--paper);overflow-x:clip}
 .site-header{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:1.25rem;height:var(--header);padding:1.25rem 5vw;background:linear-gradient(120deg,#29241ff2,#45372de8 55%,#292720f2);backdrop-filter:blur(24px) saturate(125%);-webkit-backdrop-filter:blur(24px) saturate(125%);border-bottom:1px solid #e5c89b38;box-shadow:0 5px 25px #1b130e20;transition:box-shadow .3s}
