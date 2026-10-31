@@ -3,6 +3,7 @@
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   // Motion explicitly enabled for this preview at the user's request.
   const reduceMotion = false;
+  const isHebrew = document.documentElement.lang === 'he';
   const header = document.querySelector('.site-header');
   const progress = document.createElement('div');
   progress.className = 'reading-progress';
@@ -107,8 +108,8 @@
     tab.addEventListener('click', () => selectCategory(index));
     tab.addEventListener('keydown', event => {
       let next;
-      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-      if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === 'ArrowDown' || event.key === (isHebrew?'ArrowLeft':'ArrowRight')) next = (index + 1) % tabs.length;
+      if (event.key === 'ArrowUp' || event.key === (isHebrew?'ArrowRight':'ArrowLeft')) next = (index - 1 + tabs.length) % tabs.length;
       if (event.key === 'Home') next = 0;
       if (event.key === 'End') next = tabs.length - 1;
       if (next !== undefined) { event.preventDefault(); selectCategory(next, true); }
@@ -143,17 +144,17 @@
       const delta = (horizontal ? event.deltaX : event.deltaY) * (event.deltaMode === 1 ? 16 : 1);
       if (!delta) return;
       event.preventDefault(); event.stopPropagation();
-      rail.scrollLeft += delta;
+      rail.scrollLeft += delta * (isHebrew && !horizontal ? -1 : 1);
     }, {passive:false});
   });
 
   // Discrete section navigation: one gesture -> one fixed destination.
   const chapters = [...document.querySelectorAll('.snap-section')];
   let chapterIndex = 0, moving = false, wheelSum = 0, wheelTime = 0;
-  const sectionNames = ['Home','Restaurant','Menu','Gallery','Reviews','Reservations','Contact'];
+  const sectionNames = isHebrew ? ['בית','המסעדה','תפריט','גלריה','ביקורות','הזמנות','יצירת קשר'] : ['Home','Restaurant','Menu','Gallery','Reviews','Reservations','Contact'];
   const dotsNav = document.createElement('nav');
   dotsNav.className = 'section-dots';
-  dotsNav.setAttribute('aria-label','Section navigation');
+  dotsNav.setAttribute('aria-label',isHebrew?'ניווט בין חלקי הדף':'Section navigation');
   const sectionDots = chapters.map((section,index)=>{
     const button=document.createElement('button');
     button.type='button';button.className='section-dot';
@@ -265,8 +266,8 @@
   const photos = [...document.querySelectorAll('.place-images img,.story-wide img')];
   const dialog = document.createElement('dialog');
   dialog.className = 'photo-viewer';
-  dialog.setAttribute('aria-label', 'Restaurant photographs');
-  dialog.innerHTML = '<button class="viewer-close" type="button" aria-label="Close photo">×</button><img alt=""><p></p>';
+  dialog.setAttribute('aria-label', isHebrew?'תמונות המסעדה':'Restaurant photographs');
+  dialog.innerHTML = '<button class="viewer-close" type="button" aria-label="'+(isHebrew?'סגירת תמונה':'Close photo')+'">×</button><img alt=""><p></p>';
   document.body.append(dialog);
   const fullImage = dialog.querySelector('img');
   dialog.querySelector('button').addEventListener('click', () => dialog.close());
@@ -275,7 +276,7 @@
   photos.forEach(img => {
     const button = document.createElement('button');
     button.type = 'button'; button.className = 'photo-trigger';
-    button.setAttribute('aria-label', `Enlarge photo: ${img.alt}`);
+    button.setAttribute('aria-label', `${isHebrew?'הגדלת תמונה':'Enlarge photo'}: ${img.alt}`);
     img.replaceWith(button); button.append(img);
 
     button.addEventListener('click', () => {
