@@ -71,6 +71,63 @@
   const tabs = [...document.querySelectorAll('.menu-tab')];
   const panels = [...document.querySelectorAll('.landing-menu-panel')];
   const categoryStrip = document.querySelector('.menu-tabs');
+  let activeCategory = 0;
+  const categoryCarousel = document.createElement('div');
+  categoryCarousel.className = 'category-carousel';
+  categoryStrip.before(categoryCarousel);
+  const previousCategory = document.createElement('button');
+  const nextCategory = document.createElement('button');
+  previousCategory.type = nextCategory.type = 'button';
+  previousCategory.className = nextCategory.className = 'category-arrow';
+  previousCategory.setAttribute('aria-label','Předchozí kategorie');
+  nextCategory.setAttribute('aria-label','Další kategorie');
+  previousCategory.textContent = '‹';nextCategory.textContent = '›';
+  const categoryPosition = document.createElement('span');
+  categoryPosition.className = 'category-position';
+  categoryPosition.setAttribute('aria-live','polite');
+  categoryCarousel.append(previousCategory,categoryStrip,nextCategory,categoryPosition);
+  const categoryStep = direction => selectCategory((activeCategory+direction+tabs.length)%tabs.length);
+  previousCategory.addEventListener('click',()=>categoryStep(-1));
+  nextCategory.addEventListener('click',()=>categoryStep(1));
+  function renderCategoryCarousel() {
+    tabs.forEach((tab,index)=>{
+      const offset=(index-activeCategory+tabs.length)%tabs.length;
+      tab.dataset.position=offset===0?'current':offset===1?'next':offset===tabs.length-1?'previous':'away';
+      tab.setAttribute('aria-hidden',offset>1&&offset<tabs.length-1?'true':'false');
+    });
+    categoryPosition.textContent=`${activeCategory+1} / ${tabs.length}`;
+  }
+  renderCategoryCarousel();
+  let categoryGesture = null, suppressCategoryClick = false;
+  categoryStrip.addEventListener('pointerdown',event=>{
+    if(event.button!==0)return;
+    suppressCategoryClick=false;
+    categoryGesture={x:event.clientX,y:event.clientY,id:event.pointerId};
+    if(event.pointerType==='mouse')event.preventDefault();
+  });
+  categoryStrip.addEventListener('pointermove',event=>{
+    if(!categoryGesture||event.pointerId!==categoryGesture.id)return;
+    if(Math.abs(event.clientX-categoryGesture.x)>6){
+      suppressCategoryClick=true;
+      if(!categoryStrip.hasPointerCapture(event.pointerId))categoryStrip.setPointerCapture(event.pointerId);
+    }
+  });
+  categoryStrip.addEventListener('pointerup',event=>{
+    if(!categoryGesture)return;
+    const dx=event.clientX-categoryGesture.x,dy=event.clientY-categoryGesture.y;
+    categoryGesture=null;
+    if(Math.abs(dx)>30&&Math.abs(dx)>Math.abs(dy))categoryStep(dx<0?1:-1);
+  });
+  categoryStrip.addEventListener('pointercancel',()=>{categoryGesture=null;});
+  categoryStrip.addEventListener('click',event=>{if(suppressCategoryClick){event.preventDefault();event.stopPropagation();}},{capture:true});
+  let categoryWheelTime = 0;
+  categoryCarousel.addEventListener('wheel',event=>{
+    if(event.ctrlKey)return;
+    event.preventDefault();event.stopPropagation();
+    const now=performance.now(),gap=now-categoryWheelTime;categoryWheelTime=now;
+    const delta=Math.abs(event.deltaX)>Math.abs(event.deltaY)?event.deltaX:event.deltaY;
+    if(gap>180&&Math.abs(delta)>5)categoryStep(Math.sign(delta));
+  },{passive:false});
   function selectCategory(index, focus = false) {
     tabs.forEach((tab, i) => {
       const selected = i === index;
@@ -80,7 +137,7 @@
       panels[i].hidden = !selected;
     });
     if (focus) tabs[index].focus({ preventScroll: true });
-    categoryStrip.scrollTo({left:Math.max(0,tabs[index].offsetLeft-(categoryStrip.clientWidth-tabs[index].offsetWidth)/2),behavior:'smooth'});
+    activeCategory = index; renderCategoryCarousel();
     const track = panels[index].querySelector('.landing-dishes');
     if (track) { track.scrollTop = 0; track.scrollLeft = 0; }
     if (!reduceMotion) {
@@ -111,35 +168,6 @@
       if (next !== undefined) { event.preventDefault(); selectCategory(next, true); }
     });
   });
-
-  // Swipe categories on touch screens; wheel or drag the same strip on desktop.
-  let categoryDrag = null, categoryDragged = false;
-  categoryStrip.addEventListener('pointerdown',event=>{
-    categoryDragged=false;
-    if(event.pointerType!=='mouse'||event.button!==0)return;
-    event.preventDefault();
-    categoryDrag={x:event.clientX,left:categoryStrip.scrollLeft,id:event.pointerId};
-  });
-  categoryStrip.addEventListener('pointermove',event=>{
-    if(!categoryDrag||event.pointerId!==categoryDrag.id)return;
-    const delta=event.clientX-categoryDrag.x;
-    if(!categoryDragged&&Math.abs(delta)<6)return;
-    categoryDragged=true;event.preventDefault();
-    if(!categoryStrip.hasPointerCapture(event.pointerId))categoryStrip.setPointerCapture(event.pointerId);
-    categoryStrip.classList.add('is-dragging');
-    categoryStrip.scrollLeft=categoryDrag.left-delta;
-  });
-  const endCategoryDrag=()=>{categoryDrag=null;categoryStrip.classList.remove('is-dragging');};
-  categoryStrip.addEventListener('pointerup',endCategoryDrag);
-  categoryStrip.addEventListener('pointercancel',endCategoryDrag);
-  categoryStrip.addEventListener('lostpointercapture',endCategoryDrag);
-  categoryStrip.addEventListener('click',event=>{if(categoryDragged){event.preventDefault();event.stopPropagation();categoryDragged=false;}},{capture:true});
-  categoryStrip.addEventListener('wheel',event=>{
-    if(event.ctrlKey)return;
-    event.preventDefault();event.stopPropagation();
-    const delta=Math.abs(event.deltaX)>Math.abs(event.deltaY)?event.deltaX:event.deltaY;
-    categoryStrip.scrollLeft+=delta*(event.deltaMode===1?16:event.deltaMode===2?categoryStrip.clientWidth:1);
-  },{passive:false});
 
   // Short categories must not let native scrolling escape into the page.
   document.querySelectorAll('.landing-dishes').forEach(list => {
@@ -210,8 +238,8 @@
     }
     frameId = requestAnimationFrame(tick);
   }
-  const excluded = target => target instanceof Element && !!target.closest('.landing-dishes,.menu-tabs,dialog,input,textarea,select');
-  const touchExcluded = target => target instanceof Element && !!target.closest('.landing-dishes,.menu-tabs,dialog,input,textarea,select');
+  const excluded = target => target instanceof Element && !!target.closest('.landing-dishes,.menu-tabs,.category-carousel,dialog,input,textarea,select');
+  const touchExcluded = target => target instanceof Element && !!target.closest('.landing-dishes,.menu-tabs,.category-carousel,dialog,input,textarea,select');
   addEventListener('wheel', event => {
     if (event.ctrlKey || excluded(event.target) || Math.abs(event.deltaX)>Math.abs(event.deltaY)) return;
     event.preventDefault();
