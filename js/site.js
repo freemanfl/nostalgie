@@ -23,7 +23,7 @@
   }, { passive: true });
   paintScroll();
   // Individual viewport entrances, using the Web Animations API.
-  const entranceSelector = '.story-copy > *, .story-wide figure, .food-intro .eyebrow, .food-intro h2, .intro-right > *, .panel-heading, .menu-tab, .place-heading > *, .place-images figure, .reviews-heading > *, .review-card, .reviews-bottom, .reservation-wide > *, .map-heading > *, .map-frame, .credit-footer > *';
+  const entranceSelector = '.story-copy > *, .story-wide figure, .food-intro .eyebrow, .food-intro h2, .intro-right > *, .panel-heading, .menu-tabs, .place-heading > *, .place-images figure, .reviews-heading > *, .review-card, .reviews-bottom, .reservation-wide > *, .map-heading > *, .map-frame, .credit-footer > *';
   let entranceObserver;
   const pendingEntrances = new Set();
   function animateEntrance(el, delay = 0) {
@@ -70,6 +70,7 @@
   });
   const tabs = [...document.querySelectorAll('.menu-tab')];
   const panels = [...document.querySelectorAll('.landing-menu-panel')];
+  const categoryStrip = document.querySelector('.menu-tabs');
   function selectCategory(index, focus = false) {
     tabs.forEach((tab, i) => {
       const selected = i === index;
@@ -79,6 +80,7 @@
       panels[i].hidden = !selected;
     });
     if (focus) tabs[index].focus({ preventScroll: true });
+    categoryStrip.scrollTo({left:Math.max(0,tabs[index].offsetLeft-(categoryStrip.clientWidth-tabs[index].offsetWidth)/2),behavior:'smooth'});
     const track = panels[index].querySelector('.landing-dishes');
     if (track) { track.scrollTop = 0; track.scrollLeft = 0; }
     if (!reduceMotion) {
@@ -99,7 +101,7 @@
     }
   }
   tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => selectCategory(index));
+    tab.addEventListener('click', () => selectCategory(index,true));
     tab.addEventListener('keydown', event => {
       let next;
       if (event.key === 'ArrowDown' || event.key === 'ArrowRight') next = (index + 1) % tabs.length;
@@ -109,6 +111,35 @@
       if (next !== undefined) { event.preventDefault(); selectCategory(next, true); }
     });
   });
+
+  // Swipe categories on touch screens; wheel or drag the same strip on desktop.
+  let categoryDrag = null, categoryDragged = false;
+  categoryStrip.addEventListener('pointerdown',event=>{
+    categoryDragged=false;
+    if(event.pointerType!=='mouse'||event.button!==0)return;
+    event.preventDefault();
+    categoryDrag={x:event.clientX,left:categoryStrip.scrollLeft,id:event.pointerId};
+  });
+  categoryStrip.addEventListener('pointermove',event=>{
+    if(!categoryDrag||event.pointerId!==categoryDrag.id)return;
+    const delta=event.clientX-categoryDrag.x;
+    if(!categoryDragged&&Math.abs(delta)<6)return;
+    categoryDragged=true;event.preventDefault();
+    if(!categoryStrip.hasPointerCapture(event.pointerId))categoryStrip.setPointerCapture(event.pointerId);
+    categoryStrip.classList.add('is-dragging');
+    categoryStrip.scrollLeft=categoryDrag.left-delta;
+  });
+  const endCategoryDrag=()=>{categoryDrag=null;categoryStrip.classList.remove('is-dragging');};
+  categoryStrip.addEventListener('pointerup',endCategoryDrag);
+  categoryStrip.addEventListener('pointercancel',endCategoryDrag);
+  categoryStrip.addEventListener('lostpointercapture',endCategoryDrag);
+  categoryStrip.addEventListener('click',event=>{if(categoryDragged){event.preventDefault();event.stopPropagation();categoryDragged=false;}},{capture:true});
+  categoryStrip.addEventListener('wheel',event=>{
+    if(event.ctrlKey)return;
+    event.preventDefault();event.stopPropagation();
+    const delta=Math.abs(event.deltaX)>Math.abs(event.deltaY)?event.deltaX:event.deltaY;
+    categoryStrip.scrollLeft+=delta*(event.deltaMode===1?16:event.deltaMode===2?categoryStrip.clientWidth:1);
+  },{passive:false});
 
   // Short categories must not let native scrolling escape into the page.
   document.querySelectorAll('.landing-dishes').forEach(list => {
@@ -180,7 +211,7 @@
     frameId = requestAnimationFrame(tick);
   }
   const excluded = target => target instanceof Element && !!target.closest('.landing-dishes,.menu-tabs,dialog,input,textarea,select');
-  const touchExcluded = target => target instanceof Element && !!target.closest('.landing-dishes,dialog,input,textarea,select');
+  const touchExcluded = target => target instanceof Element && !!target.closest('.landing-dishes,.menu-tabs,dialog,input,textarea,select');
   addEventListener('wheel', event => {
     if (event.ctrlKey || excluded(event.target) || Math.abs(event.deltaX)>Math.abs(event.deltaY)) return;
     event.preventDefault();
