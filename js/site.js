@@ -80,7 +80,7 @@
     });
     if (focus) tabs[index].focus({ preventScroll: true });
     const track = panels[index].querySelector('.landing-dishes');
-    if (track) track.scrollLeft = 0;
+    if (track) { track.scrollTop = 0; track.scrollLeft = 0; }
     if (!reduceMotion) {
       const heading = panels[index].querySelector('.panel-heading');
       heading.getAnimations().forEach(animation => animation.cancel());
@@ -110,36 +110,13 @@
     });
   });
 
-  // Native touch panning, mouse dragging, and wheel navigation share one rail.
-  document.querySelectorAll('.landing-dishes').forEach(rail => {
-    let drag = null;
-    rail.addEventListener('pointerdown', event => {
-      if (event.pointerType !== 'mouse' || event.button !== 0) return;
-      drag = { x:event.clientX, left:rail.scrollLeft, id:event.pointerId };
-      rail.setPointerCapture(event.pointerId);
-      rail.classList.add('is-dragging');
-    });
-    rail.addEventListener('pointermove', event => {
-      if (!drag || event.pointerId !== drag.id) return;
-      event.preventDefault();
-      rail.scrollLeft = drag.left - (event.clientX - drag.x);
-    });
-    function endDrag() {
-      drag = null;
-      rail.classList.remove('is-dragging');
-    }
-    rail.addEventListener('pointerup', endDrag);
-    rail.addEventListener('pointercancel', endDrag);
-    rail.addEventListener('lostpointercapture', endDrag);
-    rail.addEventListener('dragstart', event => event.preventDefault());
-    rail.addEventListener('wheel', event => {
-      if (event.ctrlKey || rail.scrollWidth <= rail.clientWidth + 1) return;
-      const horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
-      const delta = (horizontal ? event.deltaX : event.deltaY) * (event.deltaMode === 1 ? 16 : 1);
-      if (!delta) return;
-      event.preventDefault(); event.stopPropagation();
-      rail.scrollLeft += delta;
-    }, {passive:false});
+  // Short categories must not let native scrolling escape into the page.
+  document.querySelectorAll('.landing-dishes').forEach(list => {
+    const containShortList = event => {
+      if (!event.ctrlKey && list.scrollHeight <= list.clientHeight + 1) event.preventDefault();
+    };
+    list.addEventListener('wheel',containShortList,{passive:false});
+    list.addEventListener('touchmove',containShortList,{passive:false});
   });
 
   // Discrete section navigation: one gesture -> one fixed destination.
@@ -203,7 +180,7 @@
     frameId = requestAnimationFrame(tick);
   }
   const excluded = target => target instanceof Element && !!target.closest('.landing-dishes,.menu-tabs,dialog,input,textarea,select');
-  const touchExcluded = target => target instanceof Element && !!target.closest('dialog,input,textarea,select');
+  const touchExcluded = target => target instanceof Element && !!target.closest('.landing-dishes,dialog,input,textarea,select');
   addEventListener('wheel', event => {
     if (event.ctrlKey || excluded(event.target) || Math.abs(event.deltaX)>Math.abs(event.deltaY)) return;
     event.preventDefault();

@@ -25,7 +25,7 @@ The Czech homepage is `index.html`, with its full menu in `menu.html`. Edit `men
 - `css/critical.less`: header, hero, intro, and first-screen layout.
 - `css/local.less`: remaining homepage sections, cards, category buttons, gallery, map, lightbox, and section dots.
 - `css/menu.less`: standalone menu and print styling.
-- `js/site.js`: intro, section transitions, reveals, menu tabs, rail dragging, and gallery dialog.
+- `js/site.js`: section transitions, reveals, menu tabs, contained vertical menu scrolling, background motion, and gallery dialog.
 - `js/restore.js`: reset scroll restoration before the page initializes.
 
 Run `npm run build` after editing LESS or menu data. Do not edit generated `css/*.css` files. Stylesheets are loaded as normal external files: this deliberately avoids a flash of unstyled below-fold content when the custom section navigation moves quickly. JavaScript is deferred.
